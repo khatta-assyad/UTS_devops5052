@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tugas-ririn-deployment
+  labels:
+    app: tugas-ririn
+spec:
+  replicas: 3  # jumlah pod yang berjalan
+  selector:
+    matchLabels:
+      app: tugas-ririn
+  template:
+    metadata:
+      labels:
+        app: tugas-ririn
+    spec:
+      containers:
+      - name: tugas-ririn
+        image: tugas-ririn:latest  # Menggunakan image tugas-ririn
+        ports:
+        - containerPort: 80  # Port aplikasi 
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
